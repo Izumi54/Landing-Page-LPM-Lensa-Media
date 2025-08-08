@@ -1,0 +1,37 @@
+{
+  "name": "lpm-lensa-media-landing-page",
+  "version": "1.0.0",
+  "description": "Landing page modern dan responsif untuk LPM Lensa Media",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve . -p 8000",
+    "dev": "npx live-server --port=8000",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "echo 'Deploy to your preferred hosting service'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "landing-page",
+    "lpm-lensa-media",
+    "bootstrap",
+    "responsive",
+    "modern-design"
+  ],
+  "author": "LPM Lensa Media",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/lpm-lensa-media-landing-page.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/lpm-lensa-media-landing-page/issues"
+  },
+  "homepage": "https://username.github.io/lpm-lensa-media-landing-page",
+  "devDependencies": {
+    "serve": "^14.2.0",
+    "live-server": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
