@@ -1,0 +1,29 @@
+# Git files
+.git/
+.gitignore
+
+# Documentation files
+README.md
+MAINTENANCE-README.md
+FIXES-APPLIED.md
+CHECKLIST.md
+DEPLOYMENT.md
+PROFILE-README.md
+
+# Test files
+test-*.html
+
+# Development files
+node_modules/
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
