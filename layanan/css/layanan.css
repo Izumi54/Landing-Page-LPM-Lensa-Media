@@ -1,0 +1,374 @@
+/* CSS untuk Halaman Layanan LPM Lensa Media */
+
+/* Reset dan Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+/* Container Utama */
+.layanan-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Hero Section */
+.layanan-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.layanan-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.layanan-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+/* Icon Utama */
+.layanan-icon {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-20px);
+    }
+
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Card Sections */
+.layanan-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.layanan-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-sample {
+    background: linear-gradient(45deg, #dc3545, #c82333);
+    color: white;
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+}
+
+.status-available {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.status-development {
+    background: linear-gradient(45deg, #ffc107, #ff8c00);
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+}
+
+/* Price Tags */
+.price-tag {
+    background: linear-gradient(45deg, #ffc107, #ff8c00);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    display: inline-block;
+    margin: 1.5rem 0;
+    box-shadow: 0 10px 25px rgba(255, 193, 7, 0.3);
+}
+
+/* Buttons */
+.layanan-btn {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3);
+}
+
+.layanan-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(40, 167, 69, 0.4);
+    color: white;
+}
+
+.layanan-btn.secondary {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.layanan-btn.secondary:hover {
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+/* Info Sections */
+.info-section {
+    background: #f8f9fa;
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.info-section h4 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Feature Grid */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: #667eea;
+    margin-bottom: 1.5rem;
+}
+
+.feature-item h6 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Forms */
+.contact-form {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
+.form-control {
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.3rem rgba(102, 126, 234, 0.25);
+    transform: translateY(-2px);
+}
+
+.submit-btn {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+/* Content Lists */
+.content-list {
+    list-style: none;
+    padding: 0;
+}
+
+.content-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.content-list li:last-child {
+    border-bottom: none;
+}
+
+.content-list i {
+    color: #28a745;
+    margin-right: 0.75rem;
+    width: 20px;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: none;
+}
+
+.alert-warning {
+    background: linear-gradient(45deg, #fff3cd, #ffeaa7);
+    color: #856404;
+    border-left: 5px solid #ffc107;
+}
+
+.alert-info {
+    background: linear-gradient(45deg, #d1ecf1, #a8e6cf);
+    color: #0c5460;
+    border-left: 5px solid #17a2b8;
+}
+
+/* Back Button */
+.back-button {
+    background: linear-gradient(45deg, #6c757d, #495057);
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(108, 117, 125, 0.3);
+}
+
+.back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(108, 117, 125, 0.4);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .layanan-container {
+        padding: 1rem;
+    }
+
+    .layanan-hero {
+        padding: 2rem 1rem;
+    }
+
+    .layanan-hero h1 {
+        font-size: 2rem;
+    }
+
+    .layanan-card {
+        padding: 1.5rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-section {
+        padding: 1.5rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.layanan-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.layanan-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.layanan-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Hover Effects */
+.layanan-card:hover .feature-icon {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+    color: #764ba2;
+    transition: color 0.3s ease;
+}

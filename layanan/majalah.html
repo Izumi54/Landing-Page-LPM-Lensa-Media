@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majalah LPM Lensa Media - Edisi 1 & 2 | Limited Edition</title>
+    <meta name="description"
+        content="Majalah eksklusif LPM Lensa Media edisi 1 (2022) dan edisi 2 (2023). Limited edition dengan konten berkualitas untuk mahasiswa.">
+    <meta name="keywords"
+        content="majalah, LPM Lensa Media, edisi 1, edisi 2, limited edition, mahasiswa, kampus, Jepara">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Layanan CSS -->
+    <link rel="stylesheet" href="css/layanan.css">
+
+    <style>
+        .magazine-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .edition-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .edition-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .edition-1 {
+            border-left: 5px solid #dc3545;
+        }
+
+        .edition-2 {
+            border-left: 5px solid #28a745;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-sample {
+            background: #dc3545;
+            color: white;
+        }
+
+        .status-available {
+            background: #28a745;
+            color: white;
+        }
+
+        .price-tag {
+            background: linear-gradient(45deg, #ffc107, #ff8c00);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin: 1rem 0;
+        }
+
+        .pre-order-btn {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .pre-order-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3);
+            color: white;
+        }
+
+        .info-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            padding: 0.75rem 1rem;
+        }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layanan-container">
+        <!-- Hero Section -->
+        <div class="magazine-hero">
+            <div class="maintenance-icon bounce">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <h1 class="maintenance-title">Majalah LPM Lensa Media</h1>
+            <p class="maintenance-subtitle">
+                Edisi 1 & 2 - Limited Edition Collection
+            </p>
+            <p class="mb-0">
+                <i class="fas fa-star me-2"></i>
+                Majalah eksklusif dengan konten berkualitas untuk mahasiswa
+            </p>
+        </div>
+
+        <!-- Edisi 1 -->
+        <div class="edition-card edition-1">
+            <div class="status-badge status-sample">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                Tinggal Sample Terakhir!
+            </div>
+            <h3><i class="fas fa-book me-2"></i>Edisi 1 (2022)</h3>
+            <p class="text-muted">Majalah perdana LPM Lensa Media</p>
+
+            <div class="content-section">
+                <h6 class="mb-3">Konten Highlights:</h6>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i>Artikel-artikel menarik tentang kampus</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Foto-foto kegiatan berkualitas tinggi</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Wawancara tokoh inspiratif</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Opini dan analisis terkini</li>
+                </ul>
+            </div>
+
+            <div class="alert alert-warning">
+                <i class="fas fa-info-circle me-2"></i>
+                <strong>Status:</strong> Hanya tersisa 1 sample untuk koleksi. Tidak tersedia untuk pembelian.
+            </div>
+        </div>
+
+        <!-- Edisi 2 -->
+        <div class="edition-card edition-2">
+            <div class="status-badge status-available">
+                <i class="fas fa-check-circle me-2"></i>
+                Available for Pre-order!
+            </div>
+            <h3><i class="fas fa-book me-2"></i>Edisi 2 (2023)</h3>
+            <p class="text-muted">Edisi terbaru dengan konten yang lebih fresh</p>
+
+            <div class="content-section">
+                <h6 class="mb-3">Konten Highlights:</h6>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i>Update kegiatan kampus terbaru</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Feature stories mahasiswa inspiratif</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Analisis isu terkini</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Creative content dan karya seni</li>
+                </ul>
+            </div>
+
+            <div class="price-tag">
+                <i class="fas fa-tag me-2"></i>
+                Rp 80.000
+            </div>
+
+            <a href="#pre-order" class="pre-order-btn">
+                <i class="fas fa-shopping-cart me-2"></i>
+                Pre-order Sekarang!
+            </a>
+        </div>
+
+        <!-- Informasi Pembelian -->
+        <div class="info-section">
+            <h4><i class="fas fa-info-circle me-2"></i>Informasi Pembelian</h4>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h6><i class="fas fa-credit-card me-2"></i>Sistem Pre-order</h6>
+                    <p>Pesan sekarang, bayar saat expo kampus. Jamin ketersediaan majalah Anda!</p>
+                </div>
+                <div class="col-md-6">
+                    <h6><i class="fas fa-map-marker-alt me-2"></i>Lokasi Expo</h6>
+                    <p><strong>Universitas Islam Nahdlatul Ulama Jepara</strong><br>
+                        Biasanya diadakan awal tahun ajaran (Mei), tapi jadwal fleksibel.</p>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <h6><i class="fas fa-clock me-2"></i>Ketersediaan</h6>
+                    <p><strong>Limited Edition</strong> - Stok terbatas, jangan sampai kehabisan!</p>
+                </div>
+                <div class="col-md-6">
+                    <h6><i class="fas fa-shipping-fast me-2"></i>Pengambilan</h6>
+                    <p>Ambil dan bayar langsung saat expo kampus berlangsung.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fitur Majalah -->
+        <div class="info-section">
+            <h4><i class="fas fa-star me-2"></i>Keunggulan Majalah Kami</h4>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h6>Konten Berkualitas</h6>
+                    <p>Artikel yang ditulis dengan teliti dan informatif</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h6>Foto Profesional</h6>
+                    <p>Visual yang menarik dan berkualitas tinggi</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h6>Tim Kreatif</h6>
+                    <p>Dibuat oleh mahasiswa yang passionate</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h6>Limited Edition</h6>
+                    <p>Edisi terbatas yang layak dikoleksi</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pre-order Form -->
+        <div class="contact-form" id="pre-order">
+            <h4><i class="fas fa-shopping-cart me-2"></i>Pre-order Edisi 2</h4>
+            <p class="text-muted">Pesan sekarang untuk jamin ketersediaan majalah Anda!</p>
+
+            <form>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="name" class="form-label">Nama Lengkap</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="phone" class="form-label">Nomor WhatsApp</label>
+                        <input type="tel" class="form-control" id="phone" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Jumlah Edisi 2</label>
+                    <select class="form-control" id="quantity" required>
+                        <option value="">Pilih jumlah</option>
+                        <option value="1">1 eksemplar</option>
+                        <option value="2">2 eksemplar</option>
+                        <option value="3">3 eksemplar</option>
+                        <option value="4">4 eksemplar</option>
+                        <option value="5">5 eksemplar</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="message" class="form-label">Pesan Tambahan (Opsional)</label>
+                    <textarea class="form-control" id="message" rows="3"
+                        placeholder="Catatan khusus atau pertanyaan..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane me-2"></i>
+                    Kirim Pre-order
+                </button>
+            </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="info-section">
+            <h4><i class="fas fa-phone me-2"></i>Hubungi Kami</h4>
+            <p>Untuk informasi lebih lanjut tentang majalah atau pre-order:</p>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h6><i class="fas fa-envelope me-2"></i>Email</h6>
+                    <p>Email akan segera diupdate</p>
+                </div>
+                <div class="col-md-6">
+                    <h6><i class="fas fa-map-marker-alt me-2"></i>Kampus</h6>
+                    <p><strong>Universitas Islam Nahdlatul Ulama Jepara</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <a href="../index.html" class="back-button">
+            <i class="fas fa-arrow-left me-2"></i>
+            Kembali ke Beranda
+        </a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
