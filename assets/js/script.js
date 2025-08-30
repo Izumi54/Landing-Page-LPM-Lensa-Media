@@ -1,24 +1,24 @@
 // Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    
+document.addEventListener('DOMContentLoaded', function () {
+
     // Initialize the application
     initApp();
-    
+
     // Add event listeners for service buttons
     addServiceButtonListeners();
-    
+
     // Add smooth scrolling for anchor links
     addSmoothScrolling();
-    
+
     // Add loading animation
     addLoadingAnimation();
-    
+
     // Add scroll animations
     addScrollAnimations();
-    
+
     // Add particle effects
     addParticleEffects();
-    
+
     // Add cursor effects
     addCursorEffects();
 });
@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // Initialize the application
 function initApp() {
     console.log('LPM Lensa Media - Landing Page Loaded');
-    
+
     // Add logo fallback if image doesn't load
     const logo = document.getElementById('logo');
     if (logo) {
-        logo.addEventListener('error', function() {
+        logo.addEventListener('error', function () {
             this.style.display = 'none';
             const logoContainer = this.parentElement;
             const fallbackLogo = document.createElement('div');
@@ -53,28 +53,39 @@ function initApp() {
 // Add event listeners for service buttons
 function addServiceButtonListeners() {
     const serviceButtons = document.querySelectorAll('.service-button');
-    
+
     serviceButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
+        button.addEventListener('click', function (e) {
             const buttonId = this.id;
-            const buttonText = this.querySelector('span').textContent;
-            
+            const span = this.querySelector('span');
+            const buttonText = span ? span.textContent : 'Unknown Service';
+            const href = this.getAttribute('href');
+
             // Add click animation
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 this.style.transform = '';
             }, 150);
-            
-            // Handle different button actions
+
+            // Check if this is a maintenance page or external link
+            if (href && (href.includes('maintenance/') || href.includes('http'))) {
+                // Allow normal navigation for maintenance pages and external links
+                console.log(`Navigating to: ${href}`);
+                return; // Don't prevent default, let the link work normally
+            }
+
+            // For buttons without proper links, show modal
+            e.preventDefault();
             handleServiceButtonClick(buttonId, buttonText);
         });
-        
+
         // Add hover sound effect (optional)
-        button.addEventListener('mouseenter', function() {
+        button.addEventListener('mouseenter', function () {
             // You can add sound effects here if needed
-            console.log('Hovering over:', this.querySelector('span').textContent);
+            const span = this.querySelector('span');
+            if (span) {
+                console.log('Hovering over:', span.textContent);
+            }
         });
     });
 }
@@ -82,16 +93,16 @@ function addServiceButtonListeners() {
 // Handle service button clicks
 function handleServiceButtonClick(buttonId, buttonText) {
     console.log(`Clicked: ${buttonText} (${buttonId})`);
-    
+
     // Show loading state
     showLoadingState(buttonText);
-    
+
     // Simulate loading time (replace with actual functionality)
     setTimeout(() => {
         hideLoadingState();
-        
+
         // Handle different services
-        switch(buttonId) {
+        switch (buttonId) {
             case 'website-berita':
                 showServiceInfo('Website Berita', 'Akses berita terkini seputar kampus dan luar kampus');
                 break;
@@ -142,7 +153,7 @@ function showLoadingState(serviceName) {
         z-index: 9999;
         backdrop-filter: blur(5px);
     `;
-    
+
     document.body.appendChild(overlay);
 }
 
@@ -177,7 +188,7 @@ function showServiceInfo(title, description) {
             </div>
         </div>
     `;
-    
+
     modal.style.cssText = `
         position: fixed;
         top: 0;
@@ -190,7 +201,7 @@ function showServiceInfo(title, description) {
         justify-content: center;
         z-index: 10000;
     `;
-    
+
     const modalContent = modal.querySelector('.modal-content');
     modalContent.style.cssText = `
         background: white;
@@ -200,11 +211,11 @@ function showServiceInfo(title, description) {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         animation: modalSlideIn 0.3s ease-out;
     `;
-    
+
     document.body.appendChild(modal);
-    
+
     // Add click outside to close
-    modal.addEventListener('click', function(e) {
+    modal.addEventListener('click', function (e) {
         if (e.target === modal) {
             closeServiceModal();
         }
@@ -268,10 +279,10 @@ function addLoadingAnimation() {
 }
 
 // Add scroll effects
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     const scrolled = window.pageYOffset;
     const parallax = document.querySelector('.logo');
-    
+
     if (parallax) {
         const speed = scrolled * 0.5;
         parallax.style.transform = `translateY(${speed}px)`;
@@ -279,7 +290,7 @@ window.addEventListener('scroll', function() {
 });
 
 // Add keyboard navigation
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         closeServiceModal();
     }
@@ -287,13 +298,13 @@ document.addEventListener('keydown', function(e) {
 
 // Add touch support for mobile
 if ('ontouchstart' in window) {
-    document.addEventListener('touchstart', function() {
+    document.addEventListener('touchstart', function () {
         // Add touch-specific interactions here
     });
 }
 
 // Performance optimization
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     // Remove loading animations after page load
     setTimeout(() => {
         document.body.classList.add('loaded');
@@ -312,7 +323,7 @@ function addScrollAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -322,7 +333,7 @@ function addScrollAnimations() {
             }
         });
     }, observerOptions);
-    
+
     // Observe all sections
     document.querySelectorAll('header, .services-section, .social-media-section, .footer').forEach(el => {
         el.style.opacity = '0';
@@ -330,13 +341,13 @@ function addScrollAnimations() {
         el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
         observer.observe(el);
     });
-    
+
     // Observe service buttons with stagger
     document.querySelectorAll('.service-button').forEach((button, index) => {
         button.style.opacity = '0';
         button.style.transform = 'translateY(50px) scale(0.8)';
         button.style.transition = `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
-        
+
         const buttonObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -345,7 +356,7 @@ function addScrollAnimations() {
                 }
             });
         }, observerOptions);
-        
+
         buttonObserver.observe(button);
     });
 }
@@ -353,18 +364,18 @@ function addScrollAnimations() {
 // Add particle effects
 function addParticleEffects() {
     const particles = document.querySelectorAll('.particle');
-    
+
     particles.forEach((particle, index) => {
         // Randomize particle properties
         const size = Math.random() * 4 + 2;
         const duration = Math.random() * 4 + 4;
         const delay = Math.random() * 6;
-        
+
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
         particle.style.animationDuration = `${duration}s`;
         particle.style.animationDelay = `${delay}s`;
-        
+
         // Add random horizontal movement
         particle.style.left = `${Math.random() * 100}%`;
     });
@@ -386,7 +397,7 @@ function addCursorEffects() {
         mix-blend-mode: difference;
     `;
     document.body.appendChild(cursor);
-    
+
     const cursorTrail = document.createElement('div');
     cursorTrail.className = 'cursor-trail';
     cursorTrail.style.cssText = `
@@ -400,59 +411,59 @@ function addCursorEffects() {
         transition: all 0.2s ease;
     `;
     document.body.appendChild(cursorTrail);
-    
+
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX - 10 + 'px';
         cursor.style.top = e.clientY - 10 + 'px';
-        
+
         setTimeout(() => {
             cursorTrail.style.left = e.clientX - 4 + 'px';
             cursorTrail.style.top = e.clientY - 4 + 'px';
         }, 100);
     });
-    
+
     // Add hover effects
-document.querySelectorAll('a, button, .service-button, .social-link').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(2)';
-        cursor.style.background = 'linear-gradient(135deg, #f093fb, #f5576c)';
-        
-        // Add haptic feedback on mobile
-        if ('vibrate' in navigator) {
-            navigator.vibrate(50);
-        }
+    document.querySelectorAll('a, button, .service-button, .social-link').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'scale(2)';
+            cursor.style.background = 'linear-gradient(135deg, #f093fb, #f5576c)';
+
+            // Add haptic feedback on mobile
+            if ('vibrate' in navigator) {
+                navigator.vibrate(50);
+            }
+        });
+
+        el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'scale(1)';
+            cursor.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
+        });
+
+        // Add click effects
+        el.addEventListener('click', () => {
+            // Add haptic feedback
+            if ('vibrate' in navigator) {
+                navigator.vibrate(100);
+            }
+
+            // Add click animation
+            el.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                el.style.transform = '';
+            }, 150);
+        });
     });
-    
-    el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-        cursor.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
-    });
-    
-    // Add click effects
-    el.addEventListener('click', () => {
-        // Add haptic feedback
-        if ('vibrate' in navigator) {
-            navigator.vibrate(100);
-        }
-        
-        // Add click animation
-        el.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            el.style.transform = '';
-        }, 150);
-    });
-});
 }
 
 // Add typing effect for organization name
 function addTypingEffect() {
     const orgName = document.querySelector('.organization-name');
     if (!orgName) return;
-    
+
     const text = orgName.textContent;
     orgName.textContent = '';
     orgName.style.borderRight = '2px solid #667eea';
-    
+
     let i = 0;
     const typeWriter = () => {
         if (i < text.length) {
@@ -463,7 +474,7 @@ function addTypingEffect() {
             orgName.style.borderRight = 'none';
         }
     };
-    
+
     // Start typing after page load
     setTimeout(typeWriter, 1000);
 }
@@ -471,7 +482,7 @@ function addTypingEffect() {
 // Enhanced service button interactions
 function enhanceServiceButtons() {
     document.querySelectorAll('.service-button').forEach(button => {
-        button.addEventListener('mouseenter', function() {
+        button.addEventListener('mouseenter', function () {
             // Add ripple effect
             const ripple = document.createElement('div');
             ripple.style.cssText = `
@@ -482,19 +493,19 @@ function enhanceServiceButtons() {
                 animation: ripple 0.6s linear;
                 pointer-events: none;
             `;
-            
+
             const rect = this.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
             ripple.style.width = ripple.style.height = size + 'px';
             ripple.style.left = (rect.width / 2 - size / 2) + 'px';
             ripple.style.top = (rect.height / 2 - size / 2) + 'px';
-            
+
             this.appendChild(ripple);
-            
+
             setTimeout(() => ripple.remove(), 600);
         });
-        
-        button.addEventListener('click', function() {
+
+        button.addEventListener('click', function () {
             // Add confetti effect
             createConfetti(this);
         });
@@ -505,7 +516,7 @@ function enhanceServiceButtons() {
 function createConfetti(element) {
     const colors = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4ecdc4', '#45b7d1'];
     const rect = element.getBoundingClientRect();
-    
+
     for (let i = 0; i < 20; i++) {
         const confetti = document.createElement('div');
         confetti.style.cssText = `
@@ -519,36 +530,36 @@ function createConfetti(element) {
             z-index: 9999;
             border-radius: 2px;
         `;
-        
+
         document.body.appendChild(confetti);
-        
+
         const angle = Math.random() * Math.PI * 2;
         const velocity = Math.random() * 10 + 5;
         const vx = Math.cos(angle) * velocity;
         const vy = Math.sin(angle) * velocity - 5;
-        
+
         let x = rect.left + rect.width / 2;
         let y = rect.top + rect.height / 2;
         let opacity = 1;
-        
+
         const animate = () => {
             x += vx;
             y += vy;
             vy += 0.5; // gravity
             opacity -= 0.02;
-            
+
             confetti.style.left = x + 'px';
             confetti.style.top = y + 'px';
             confetti.style.opacity = opacity;
             confetti.style.transform = `rotate(${Date.now() * 0.1}deg)`;
-            
+
             if (opacity > 0) {
                 requestAnimationFrame(animate);
             } else {
                 confetti.remove();
             }
         };
-        
+
         requestAnimationFrame(animate);
     }
 }
@@ -631,21 +642,21 @@ function addCustomCSS() {
 // Add 3D tilt effect
 function add3DTiltEffect() {
     document.querySelectorAll('.service-button, .social-link').forEach(element => {
-        element.addEventListener('mousemove', function(e) {
+        element.addEventListener('mousemove', function (e) {
             const rect = this.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            
+
             const rotateX = (y - centerY) / 10;
             const rotateY = (centerX - x) / 10;
-            
+
             this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
         });
-        
-        element.addEventListener('mouseleave', function() {
+
+        element.addEventListener('mouseleave', function () {
             this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
         });
     });
@@ -655,38 +666,38 @@ function add3DTiltEffect() {
 function addMagneticEffect() {
     document.querySelectorAll('.service-button, .social-link').forEach(element => {
         element.classList.add('magnetic');
-        
-        element.addEventListener('mousemove', function(e) {
+
+        element.addEventListener('mousemove', function (e) {
             const rect = this.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
-            
+
             const distance = Math.sqrt(x * x + y * y);
             const maxDistance = Math.sqrt(rect.width * rect.width + rect.height * rect.height) / 2;
-            
+
             if (distance < maxDistance) {
                 const force = (maxDistance - distance) / maxDistance;
                 const moveX = x * force * 0.1;
                 const moveY = y * force * 0.1;
-                
+
                 this.style.transform = `translate(${moveX}px, ${moveY}px)`;
             }
         });
-        
-        element.addEventListener('mouseleave', function() {
+
+        element.addEventListener('mouseleave', function () {
             this.style.transform = 'translate(0px, 0px)';
         });
     });
 }
 
 // Initialize enhanced features
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     addTypingEffect();
     enhanceServiceButtons();
     addCustomCSS();
     add3DTiltEffect();
     addMagneticEffect();
-    
+
     // Hide loading screen after page load
     setTimeout(() => {
         const loadingScreen = document.getElementById('loading-screen');

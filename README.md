@@ -1,196 +1,212 @@
-# LPM Lensa Media - Landing Page
+# 🌟 LPM Lensa Media - Landing Page
 
-Landing page modern dan responsif untuk LPM Lensa Media, organisasi media informasi mahasiswa.
+## 📖 Tentang Website
 
-## 🚀 Fitur
+**LPM Lensa Media** adalah website landing page resmi untuk organisasi mahasiswa Lembaga Pers Mahasiswa (LPM) Lensa Media. Website ini dirancang sebagai portal informasi utama yang menampilkan layanan, struktur organisasi, dan cara bergabung dengan organisasi.
 
-- **Design Modern**: Menggunakan gradient dan glassmorphism effect
-- **Responsif**: Optimal di desktop, tablet, dan mobile
-- **Interaktif**: Animasi dan efek hover yang menarik
-- **6 Layanan Utama**: Website berita, majalah, struktur organisasi, media partner, join organisasi, dan support organisasi
-- **Social Media Integration**: Email, Instagram, WhatsApp, YouTube, dan Facebook
-- **Bootstrap 5**: Framework CSS modern untuk layout yang konsisten
+## 🎯 Fitur Utama
 
-## 📁 Struktur Folder
+### ✨ **Layanan yang Tersedia**
+- **📰 Website Berita** - Akses langsung ke [lensanewsroom.com](https://lensanewsroom.com/)
+- **📖 Majalah** - Majalah digital dan cetak LPM Lensa Media
+- **🗂️ Struktur Organisasi** - Informasi kepengurusan dan divisi
+- **🤝 Media Partner** - Kemitraan media dan kolaborasi
+- **👥 Join Organisasi** - Pendaftaran anggota baru
+- **❤️ Support Organisasi** - Cara mendukung dan berkontribusi
+
+### 🎨 **Design & User Experience**
+- **Responsive Design** - Kompatibel dengan semua ukuran layar
+- **Modern UI/UX** - Interface yang menarik dan user-friendly
+- **Smooth Animations** - Transisi dan animasi yang halus
+- **Loading Screen** - Splash screen yang menarik
+- **Particle Effects** - Efek visual yang dinamis
+
+## 🚀 Teknologi yang Digunakan
+
+### **Frontend**
+- **HTML5** - Struktur website yang semantic
+- **CSS3** - Styling modern dengan animasi
+- **JavaScript (ES6+)** - Interaktivitas dan animasi
+- **Bootstrap 5** - Framework CSS untuk responsive design
+
+### **Libraries & Dependencies**
+- **Font Awesome** - Icon library yang lengkap
+- **Google Fonts** - Typography yang menarik (Poppins)
+- **PWA Ready** - Progressive Web App capabilities
+
+## 📁 Struktur Proyek
 
 ```
-landing-page-lensa-media-4/
-├── index.html                 # File HTML utama
-├── assets/                    # Folder aset
-│   ├── css/
-│   │   └── style.css         # File CSS custom
-│   ├── js/
-│   │   └── script.js         # File JavaScript
-│   └── images/
-│       └── logo.png          # Logo organisasi (perlu ditambahkan)
-├── README.md                 # Dokumentasi ini
-└── .gitignore               # File yang diabaikan Git
+Landing-Page-LPM-Lensa-Media/
+├── 📄 index.html                 ← Halaman utama website
+├── 📁 maintenance/               ← Halaman maintenance yang terstruktur
+│   ├── 📄 index.html            ← Overview semua layanan
+│   ├── 📄 majalah.html          ← Halaman maintenance Majalah
+│   ├── 📄 struktur.html         ← Halaman maintenance Struktur Organisasi
+│   ├── 📄 media-partner.html    ← Halaman maintenance Media Partner
+│   ├── 📄 join.html             ← Halaman maintenance Join Organisasi
+│   ├── 📄 support.html          ← Halaman maintenance Support Organisasi
+│   └── 📁 css/
+│       └── 📄 maintenance.css   ← CSS unified untuk maintenance
+├── 📁 assets/                   ← Asset website
+│   ├── 📁 css/                  ← Stylesheet utama
+│   ├── 📁 js/                   ← JavaScript files
+│   └── 📁 images/               ← Gambar dan logo
+├── 📄 manifest.json             ← PWA manifest
+├── 📄 robots.txt                ← SEO robots
+├── 📄 sitemap.xml               ← Sitemap untuk SEO
+└── 📚 Documentation files...
 ```
 
-## 🛠️ Teknologi yang Digunakan
+## 🌐 Halaman Website
 
-- **HTML5**: Struktur halaman web
-- **CSS3**: Styling dengan animasi dan efek modern
-- **JavaScript (ES6+)**: Interaktivitas dan animasi
-- **Bootstrap 5**: Framework CSS untuk layout responsif
-- **Font Awesome**: Ikon-ikon yang digunakan
+### **🏠 Beranda (`index.html`)**
+- Header dengan logo dan nama organisasi
+- Section layanan dengan 6 button utama
+- Social media links
+- Footer dengan copyright
 
-## 🚀 Cara Deploy ke Publik
+### **🔧 Maintenance Pages**
+- **Overview** - Daftar semua layanan dalam pengembangan
+- **Majalah** - Status pengembangan majalah digital
+- **Struktur Organisasi** - Progress struktur kepengurusan
+- **Media Partner** - Informasi kemitraan media
+- **Join Organisasi** - Persyaratan dan cara bergabung
+- **Support Organisasi** - Cara mendukung organisasi
 
-### 1. GitHub Pages (Gratis)
+## 🎨 Design System
 
-```bash
-# 1. Buat repository di GitHub
-# 2. Upload semua file ke repository
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/username/repository-name.git
-git push -u origin main
+### **Color Palette**
+- **Primary**: `#764ba2` (Ungu)
+- **Secondary**: `#667eea` (Biru)
+- **Accent**: `#28a745` (Hijau), `#ffc107` (Kuning), `#dc3545` (Merah)
+- **Background**: Gradient dari biru ke ungu
+- **Text**: `#333` (Gelap) dan `#666` (Abu-abu)
 
-# 3. Aktifkan GitHub Pages di Settings > Pages
-# 4. Website akan tersedia di: https://username.github.io/repository-name
-```
+### **Typography**
+- **Font Family**: Poppins (Google Fonts)
+- **Weights**: 300, 400, 500, 600, 700, 800
+- **Responsive**: Ukuran font yang menyesuaikan layar
 
-### 2. Netlify (Gratis)
+### **Components**
+- **Service Buttons** - Button dengan hover effects dan animasi
+- **Maintenance Cards** - Card design yang konsisten
+- **Progress Bars** - Indikator progress pengembangan
+- **Social Links** - Icon social media yang interaktif
 
-```bash
-# 1. Upload folder ke Netlify
-# 2. Drag & drop folder ke netlify.com
-# 3. Website akan tersedia di: https://random-name.netlify.app
-# 4. Bisa custom domain jika diperlukan
-```
+## 📱 Responsive Design
 
-### 3. Vercel (Gratis)
+### **Breakpoints**
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
 
-```bash
-# 1. Install Vercel CLI
-npm i -g vercel
+### **Features**
+- **Mobile-first approach**
+- **Touch-friendly interactions**
+- **Optimized for all devices**
+- **Smooth scrolling**
+- **Adaptive layouts**
 
-# 2. Deploy dari folder
-vercel
+## 🔧 Maintenance & Development
 
-# 3. Ikuti instruksi di terminal
-# 4. Website akan tersedia di: https://project-name.vercel.app
-```
+### **Status Pengembangan**
+| Layanan | Status | Progress | Estimasi |
+|---------|--------|----------|----------|
+| Majalah | 🔄 Development | 40% | 2-3 Minggu |
+| Struktur | 🔄 Development | 60% | 1-2 Minggu |
+| Media Partner | 🔄 Development | 30% | 3-4 Minggu |
+| Join | 🔄 Development | 50% | 1-2 Minggu |
+| Support | 🔄 Development | 35% | 2-3 Minggu |
 
-### 4. Firebase Hosting (Gratis)
+### **Cara Update**
+1. **CSS**: Edit `maintenance/css/maintenance.css`
+2. **Content**: Edit file HTML yang sesuai
+3. **JavaScript**: Edit `assets/js/script-clean.js`
+4. **Structure**: Update `maintenance/index.html`
 
-```bash
-# 1. Install Firebase CLI
-npm install -g firebase-tools
+## 📊 SEO & Performance
 
-# 2. Login ke Firebase
-firebase login
-
-# 3. Inisialisasi project
-firebase init hosting
-
-# 4. Deploy
-firebase deploy
-```
-
-### 5. Shared Hosting (Berbayar)
-
-1. Upload semua file ke folder `public_html` atau `www`
-2. Pastikan `index.html` ada di root folder
-3. Website akan tersedia di domain yang dibeli
-
-## 📱 Responsivitas
-
-Website sudah dioptimalkan untuk berbagai ukuran layar:
-
-- **Desktop**: 1200px+
-- **Tablet**: 768px - 1199px
-- **Mobile**: 320px - 767px
-
-## 🎨 Customization
-
-### Mengubah Logo
-1. Ganti file `assets/images/logo.png` dengan logo organisasi
-2. Pastikan ukuran minimal 120x120px
-3. Format PNG dengan background transparan
-
-### Mengubah Warna
-Edit file `assets/css/style.css`:
-```css
-/* Warna utama */
-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-
-/* Warna sekunder */
-color: #2c3e50;
-```
-
-### Mengubah Link Social Media
-Edit file `index.html`:
-```html
-<!-- Instagram -->
-<a href="https://instagram.com/username-anda" class="social-link" title="Instagram" target="_blank">
-    <i class="fab fa-instagram"></i>
-</a>
-```
-
-## 🔧 Pengembangan Lokal
-
-1. **Clone repository**:
-```bash
-git clone https://github.com/username/repository-name.git
-cd repository-name
-```
-
-2. **Buka di browser**:
-```bash
-# Menggunakan Python
-python -m http.server 8000
-
-# Menggunakan Node.js
-npx serve .
-
-# Menggunakan PHP
-php -S localhost:8000
-```
-
-3. **Akses di browser**: `http://localhost:8000`
-
-## 📋 Checklist Deployment
-
-- [ ] Logo organisasi sudah ditambahkan
-- [ ] Link social media sudah diupdate
-- [ ] Email dan WhatsApp sudah diupdate
-- [ ] Testing di berbagai browser
-- [ ] Testing di mobile device
-- [ ] SEO meta tags sudah dioptimasi
-- [ ] Performance sudah dioptimasi
-
-## 🎯 SEO Optimization
-
-Website sudah dioptimasi untuk SEO dengan:
-
+### **SEO Features**
 - Meta tags yang lengkap
+- Open Graph tags untuk social media
+- Twitter Card support
+- Sitemap XML
+- Robots.txt
 - Semantic HTML structure
-- Alt text untuk gambar
-- Responsive design
-- Fast loading time
 
-## 🔒 Keamanan
+### **Performance**
+- Optimized images
+- Minified CSS/JS
+- Lazy loading
+- Smooth animations
+- Fast loading times
 
-- HTTPS recommended untuk production
-- Validasi input user
-- Sanitasi data
-- Regular security updates
+## 🌟 Fitur Khusus
 
-## 📞 Support
+### **Loading Screen**
+- Animated logo spinner
+- Progress bar
+- Smooth transitions
+- Brand consistency
 
-Untuk pertanyaan atau bantuan:
-- Email: info@lensamedia.com
-- WhatsApp: +62 812-3456-7890
-- Instagram: @lensamedia
+### **Particle Effects**
+- Floating particles
+- Dynamic animations
+- Performance optimized
+- Visual appeal
 
-## 📄 License
+### **Social Integration**
+- Direct links to social media
+- Email integration
+- WhatsApp business link
+- YouTube channel link
+
+## 📞 Kontak & Informasi
+
+### **Organisasi**
+- **Nama**: LPM Lensa Media
+- **Jenis**: Lembaga Pers Mahasiswa
+- **Fokus**: Media informasi mahasiswa dan kampus
+
+### **Kontak**
+- **Email**: info@lensamedia.com
+- **WhatsApp**: +62 812-3456-7890
+- **Instagram**: [@lensamedia](https://instagram.com/lensamedia)
+- **YouTube**: [@lensamedia](https://youtube.com/@lensamedia)
+- **Facebook**: [lensamedia](https://facebook.com/lensamedia)
+
+## 🚀 Cara Menjalankan
+
+### **Local Development**
+1. Clone repository ini
+2. Buka folder proyek
+3. Jalankan server lokal:
+   ```bash
+   python3 -m http.server 8000
+   ```
+4. Buka browser ke `http://localhost:8000`
+
+### **File Test**
+- `test-fixed-links.html` - Test semua link maintenance
+- `test-links.html` - Test link navigation
+
+## 📚 Dokumentasi
+
+- **`MAINTENANCE-README.md`** - Dokumentasi halaman maintenance
+- **`FIXES-APPLIED.md`** - Riwayat perbaikan yang diterapkan
+- **`CHECKLIST.md`** - Checklist pengembangan
+- **`DEPLOYMENT.md`** - Panduan deployment (jika diperlukan)
+
+## 🤝 Kontribusi
+
+Website ini dikembangkan untuk LPM Lensa Media. Untuk kontribusi atau pertanyaan, silakan hubungi tim development melalui kontak yang tersedia.
+
+## 📄 Lisensi
 
 © 2024 LPM Lensa Media. All rights reserved.
 
 ---
 
-**Dibuat dengan ❤️ untuk LPM Lensa Media**
+**Dibuat dengan ❤️ untuk LPM Lensa Media**  
+**Tim Development** - 2024
