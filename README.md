@@ -170,11 +170,11 @@ Landing-Page-LPM-Lensa-Media/
 - **Fokus**: Media informasi mahasiswa dan kampus
 
 ### **Kontak**
-- **Email**: info@lensamedia.com
-- **WhatsApp**: +62 812-3456-7890
-- **Instagram**: [@lensamedia](https://instagram.com/lensamedia)
-- **YouTube**: [@lensamedia](https://youtube.com/@lensamedia)
-- **Facebook**: [lensamedia](https://facebook.com/lensamedia)
+- **Email**: lensamedia.unisnu@gmail.com
+- **WhatsApp**: -
+- **Instagram**: [@lpmlensamedia](https://instagram.com/lpmlensamedia)
+- **YouTube**: [@lpmlensamedia](https://youtube.com/@lpmlensamedia)
+- **Facebook**: [lpmlensamedia](https://facebook.com/lpmlensamedia)
 
 ## 🚀 Cara Menjalankan
 

@@ -183,69 +183,207 @@
             </p>
         </div>
 
-        <!-- Edisi 1 -->
-        <div class="edition-card edition-1">
-            <div class="status-badge status-sample">
-                <i class="fas fa-exclamation-triangle me-2"></i>
-                Tinggal Sample Terakhir!
-            </div>
-            <h3><i class="fas fa-book me-2"></i>Edisi 1 (2022)</h3>
-            <p class="text-muted">Majalah perdana LPM Lensa Media</p>
-
-            <div class="content-section">
-                <h6 class="mb-3">Konten Highlights:</h6>
-                <ul class="list-unstyled">
-                    <li><i class="fas fa-check text-success me-2"></i>Artikel-artikel menarik tentang kampus</li>
-                    <li><i class="fas fa-check text-success me-2"></i>Foto-foto kegiatan berkualitas tinggi</li>
-                    <li><i class="fas fa-check text-success me-2"></i>Wawancara tokoh inspiratif</li>
-                    <li><i class="fas fa-check text-success me-2"></i>Opini dan analisis terkini</li>
-                </ul>
-            </div>
-
-            <div class="alert alert-warning">
-                <i class="fas fa-info-circle me-2"></i>
-                <strong>Status:</strong> Hanya tersisa 1 sample untuk koleksi. Tidak tersedia untuk pembelian.
+        <!-- Free Magazine Alert -->
+        <div class="free-alert-section">
+            <div class="free-alert-content">
+                <div class="free-alert-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="free-alert-text">
+                    <h4>🎉 MAJALAH 100% GRATIS!</h4>
+                    <p>LPM Lensa Media memberikan majalah berkualitas tinggi <strong>GRATIS</strong> untuk semua
+                        mahasiswa. Tidak ada biaya apapun!</p>
+                </div>
             </div>
         </div>
 
-        <!-- Edisi 2 -->
-        <div class="edition-card edition-2">
-            <div class="status-badge status-available">
-                <i class="fas fa-check-circle me-2"></i>
-                Available for Pre-order!
-            </div>
-            <h3><i class="fas fa-book me-2"></i>Edisi 2 (2023)</h3>
-            <p class="text-muted">Edisi terbaru dengan konten yang lebih fresh</p>
+        <!-- Editions Grid -->
+        <div class="editions-grid">
 
-            <div class="content-section">
-                <h6 class="mb-3">Konten Highlights:</h6>
-                <ul class="list-unstyled">
-                    <li><i class="fas fa-check text-success me-2"></i>Update kegiatan kampus terbaru</li>
-                    <li><i class="fas fa-check text-success me-2"></i>Feature stories mahasiswa inspiratif</li>
-                    <li><i class="fas fa-check text-success me-2"></i>Analisis isu terkini</li>
-                    <li><i class="fas fa-check text-success me-2"></i>Creative content dan karya seni</li>
-                </ul>
+            <!-- Edisi 1 -->
+            <div class="edition-card edition-1">
+                <div class="edition-cover">
+                    <img src="../assets/images/majalah_edisi_1.png" alt="Cover Majalah Edisi 1 - Swa Paksa"
+                        class="cover-image">
+                </div>
+                <h3><i class="fas fa-book me-2"></i>Edisi 1 (2022)</h3>
+                <p class="text-muted">Majalah perdana LPM Lensa Media</p>
+
+                <div class="content-section">
+                    <h6 class="mb-3">Konten Highlights:</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i>Artikel-artikel menarik tentang kampus</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Foto-foto kegiatan berkualitas tinggi</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Wawancara tokoh inspiratif</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Opini dan analisis terkini</li>
+                    </ul>
+                </div>
+
+
+
+                <div class="edition-actions">
+                    <a href="majalah-reader.html?edisi=1" class="pre-order-btn me-2">
+                        <i class="fas fa-eye me-2"></i>
+                        Baca Online
+                    </a>
+                    <button class="pre-order-btn" onclick="downloadMagazine(1)">
+                        <i class="fas fa-download me-2"></i>
+                        Download PDF
+                    </button>
+                </div>
             </div>
 
-            <div class="price-tag">
-                <i class="fas fa-tag me-2"></i>
-                Rp 80.000
+            <!-- Edisi 2 -->
+            <div class="edition-card edition-2">
+                <div class="edition-cover">
+                    <img src="../assets/images/majalah_edisi_2.png" alt="Cover Majalah Edisi 2 - TECHNO"
+                        class="cover-image">
+                </div>
+                <h3><i class="fas fa-book me-2"></i>Edisi 2 (2023)</h3>
+                <p class="text-muted">Edisi terbaru dengan konten yang lebih fresh - <strong>GRATIS!</strong></p>
+
+                <div class="content-section">
+                    <h6 class="mb-3">Konten Highlights:</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i>Update kegiatan kampus terbaru</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Feature stories mahasiswa inspiratif</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Analisis isu terkini</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Creative content dan karya seni</li>
+                    </ul>
+                </div>
+
+
+
+                <div class="edition-actions">
+                    <a href="majalah-reader.html?edisi=2" class="pre-order-btn me-2">
+                        <i class="fas fa-eye me-2"></i>
+                        Baca Online
+                    </a>
+                    <button class="pre-order-btn" onclick="downloadMagazine(2)">
+                        <i class="fas fa-download me-2"></i>
+                        Download PDF
+                    </button>
+                </div>
             </div>
 
-            <a href="#pre-order" class="pre-order-btn">
-                <i class="fas fa-shopping-cart me-2"></i>
-                Pre-order Sekarang!
-            </a>
+            <!-- Edisi 3 (Coming Soon) -->
+            <div class="edition-card edition-3">
+                <div class="edition-cover">
+                    <img src="../assets/images/majalah_edisi_3_placeholder.png"
+                        alt="Cover Majalah Edisi 3 - Coming Soon" class="cover-image">
+                </div>
+                <h3><i class="fas fa-book me-2"></i>Edisi 3 (Segera Datang)</h3>
+                <p class="text-muted">Tanggal publikasi belum ditentukan. Nantikan pengumuman resmi.</p>
+
+                <div class="content-section">
+                    <h6 class="mb-3">Rencana Konten:</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i>Topik kampus terbaru</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Feature story mahasiswa</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Analisis isu hangat</li>
+                    </ul>
+                </div>
+
+                <div class="edition-actions">
+                    <button class="pre-order-btn" disabled>
+                        <i class="fas fa-hourglass-half me-2"></i>
+                        Segera Datang
+                    </button>
+                </div>
+            </div>
+
+        </div> <!-- end .editions-grid -->
+
+        <!-- Magazine Preview Modal -->
+        <div class="modal fade" id="magazinePreviewModal" tabindex="-1" aria-labelledby="magazinePreviewModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="magazinePreviewModalLabel">Preview Majalah</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="magazinePreviewContent">
+                            <!-- PDF viewer akan ditampilkan di sini -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-success" id="downloadFromPreview">
+                            <i class="fas fa-download me-2"></i>Download PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Informasi Pembelian -->
+        <!-- Sample Content Section -->
+        <div class="sample-content-section">
+            <h4 class="text-center mb-4">
+                <i class="fas fa-eye me-2"></i>
+                Sample Konten Majalah
+            </h4>
+
+            <div class="content-preview-grid">
+                <div class="content-preview-item">
+                    <div class="content-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h6>Artikel Kampus</h6>
+                    <p>Berita terkini seputar kegiatan mahasiswa dan prestasi kampus</p>
+                    <div class="content-tags">
+                        <span class="tag">Berita</span>
+                        <span class="tag">Kampus</span>
+                    </div>
+                </div>
+
+                <div class="content-preview-item">
+                    <div class="content-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h6>Foto Kegiatan</h6>
+                    <p>Dokumentasi visual yang menarik dari berbagai event kampus</p>
+                    <div class="content-tags">
+                        <span class="tag">Foto</span>
+                        <span class="tag">Event</span>
+                    </div>
+                </div>
+
+                <div class="content-preview-item">
+                    <div class="content-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h6>Wawancara</h6>
+                    <p>Kisah inspiratif dari mahasiswa berprestasi dan dosen</p>
+                    <div class="content-tags">
+                        <span class="tag">Wawancara</span>
+                        <span class="tag">Inspirasi</span>
+                    </div>
+                </div>
+
+                <div class="content-preview-item">
+                    <div class="content-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h6>Analisis & Opini</h6>
+                    <p>Artikel mendalam dengan perspektif mahasiswa terkini</p>
+                    <div class="content-tags">
+                        <span class="tag">Analisis</span>
+                        <span class="tag">Opini</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Informasi Distribusi -->
         <div class="info-section">
-            <h4><i class="fas fa-info-circle me-2"></i>Informasi Pembelian</h4>
+            <h4><i class="fas fa-info-circle me-2"></i>Informasi Distribusi</h4>
 
             <div class="row">
                 <div class="col-md-6">
-                    <h6><i class="fas fa-credit-card me-2"></i>Sistem Pre-order</h6>
-                    <p>Pesan sekarang, bayar saat expo kampus. Jamin ketersediaan majalah Anda!</p>
+                    <h6><i class="fas fa-gift me-2"></i>Sistem Distribusi Gratis</h6>
+                    <p>Daftar sekarang, dapatkan majalah gratis saat expo kampus!</p>
                 </div>
                 <div class="col-md-6">
                     <h6><i class="fas fa-map-marker-alt me-2"></i>Lokasi Expo</h6>
@@ -261,7 +399,49 @@
                 </div>
                 <div class="col-md-6">
                     <h6><i class="fas fa-shipping-fast me-2"></i>Pengambilan</h6>
-                    <p>Ambil dan bayar langsung saat expo kampus berlangsung.</p>
+                    <p>Ambil langsung gratis saat expo kampus berlangsung.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose Our Magazine -->
+        <div class="why-choose-section">
+            <h4 class="text-center mb-4">
+                <i class="fas fa-heart me-2"></i>
+                Mengapa Memilih Majalah Kami?
+            </h4>
+
+            <div class="why-choose-grid">
+                <div class="why-choose-item">
+                    <div class="why-choose-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h6>Kualitas Premium</h6>
+                    <p>Dibuat dengan standar tinggi, dari konten hingga desain visual</p>
+                </div>
+
+                <div class="why-choose-item">
+                    <div class="why-choose-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h6>Tim Mahasiswa</h6>
+                    <p>Konten yang relatable dan sesuai dengan perspektif mahasiswa</p>
+                </div>
+
+                <div class="why-choose-item">
+                    <div class="why-choose-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h6>100% GRATIS</h6>
+                    <p>Edisi terbatas yang eksklusif dan <strong>GRATIS</strong> untuk mahasiswa</p>
+                </div>
+
+                <div class="why-choose-item">
+                    <div class="why-choose-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h6>Konten Fresh</h6>
+                    <p>Update terbaru seputar kampus dan dunia mahasiswa</p>
                 </div>
             </div>
         </div>
@@ -305,57 +485,12 @@
             </div>
         </div>
 
-        <!-- Pre-order Form -->
-        <div class="contact-form" id="pre-order">
-            <h4><i class="fas fa-shopping-cart me-2"></i>Pre-order Edisi 2</h4>
-            <p class="text-muted">Pesan sekarang untuk jamin ketersediaan majalah Anda!</p>
 
-            <form>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="name" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="name" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="phone" class="form-label">Nomor WhatsApp</label>
-                        <input type="tel" class="form-control" id="phone" required>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="quantity" class="form-label">Jumlah Edisi 2</label>
-                    <select class="form-control" id="quantity" required>
-                        <option value="">Pilih jumlah</option>
-                        <option value="1">1 eksemplar</option>
-                        <option value="2">2 eksemplar</option>
-                        <option value="3">3 eksemplar</option>
-                        <option value="4">4 eksemplar</option>
-                        <option value="5">5 eksemplar</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label for="message" class="form-label">Pesan Tambahan (Opsional)</label>
-                    <textarea class="form-control" id="message" rows="3"
-                        placeholder="Catatan khusus atau pertanyaan..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane me-2"></i>
-                    Kirim Pre-order
-                </button>
-            </form>
-        </div>
 
         <!-- Contact Info -->
         <div class="info-section">
             <h4><i class="fas fa-phone me-2"></i>Hubungi Kami</h4>
-            <p>Untuk informasi lebih lanjut tentang majalah atau pre-order:</p>
+            <p>Untuk informasi lebih lanjut tentang majalah gratis:</p>
 
             <div class="row">
                 <div class="col-md-6">
@@ -369,6 +504,11 @@
             </div>
         </div>
 
+        <!-- Toast Notification Container -->
+        <div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+            <!-- Toast notifications will be added here dynamically -->
+        </div>
+
         <!-- Back Button -->
         <a href="../index.html" class="back-button">
             <i class="fas fa-arrow-left me-2"></i>
@@ -378,6 +518,203 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- PDF.js untuk preview majalah -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script>
+        // Konfigurasi PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        let currentMagazineEdition = null;
+
+        // Fungsi untuk preview majalah
+        function previewMagazine(edition) {
+            currentMagazineEdition = edition;
+            const modal = new bootstrap.Modal(document.getElementById('magazinePreviewModal'));
+            const modalTitle = document.getElementById('magazinePreviewModalLabel');
+            const previewContent = document.getElementById('magazinePreviewContent');
+
+            // Tampilkan toast info saat membuka preview
+            let previewTitle, previewMessage;
+            if (edition === 1) {
+                previewTitle = 'Preview Majalah 📖';
+                previewMessage = 'Membuka preview "Swa Paksa"...';
+            } else if (edition === 2) {
+                previewTitle = 'Preview Majalah 📖';
+                previewMessage = 'Membuka preview "TECHNO"...';
+            }
+            showInfoToast(previewTitle, previewMessage, 'fas fa-eye');
+
+            if (edition === 1) {
+                modalTitle.textContent = 'Preview Majalah Edisi 1 - Swa Paksa';
+                previewContent.innerHTML = `
+                    <div class="text-center p-4">
+                        <div class="mb-3">
+                            <img src="../assets/images/majalah_edisi_1.png" alt="Cover Edisi 1" class="img-fluid" style="max-width: 300px; border-radius: 10px;">
+                        </div>
+                        <h5>Swa Paksa - Babad Gelora Wanita Jepara</h5>
+                        <p class="text-muted">Edisi 1 (2022)</p>
+                        <div class="alert alert-info">
+                            <h6>Konten Utama:</h6>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-newspaper me-2"></i>Reportase: Kemana Harus Speak Up</li>
+                                <li><i class="fas fa-user-tie me-2"></i>Artikel Dosen: Membumikan Bahasa Jawa</li>
+                                <li><i class="fas fa-map-marker-alt me-2"></i>Isu Jepara: Surga Kecil Karimunjawa</li>
+                                <li><i class="fas fa-star me-2"></i>Artikel Utama: Mari Memuliakan Perempuan</li>
+                                <li><i class="fas fa-chart-bar me-2"></i>Infografis: Serangan Ratu Kalinyamat</li>
+                            </ul>
+                        </div>
+                        <p><strong>Status:</strong> Sample terakhir tersedia untuk koleksi</p>
+                    </div>
+                `;
+            } else if (edition === 2) {
+                modalTitle.textContent = 'Preview Majalah Edisi 2 - TECHNO';
+                previewContent.innerHTML = `
+                    <div class="text-center p-4">
+                        <div class="mb-3">
+                            <img src="../assets/images/majalah_edisi_2.png" alt="Cover Edisi 2" class="img-fluid" style="max-width: 300px; border-radius: 10px;">
+                        </div>
+                        <h5>TECHNO - Pemuda Sudah Paham Pemilu 2024?</h5>
+                        <p class="text-muted">Edisi 2 (2023)</p>
+                        <div class="alert alert-success">
+                            <h6>Konten Utama:</h6>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-history me-2"></i>Sejarah Pemilu</li>
+                                <li><i class="fas fa-graduation-cap me-2"></i>Pendidikan Politik</li>
+                                <li><i class="fas fa-users me-2"></i>Pemilu & Kader Partai</li>
+                                <li><i class="fas fa-robot me-2"></i>AI dalam Politik</li>
+                            </ul>
+                        </div>
+                        <p><strong>Status:</strong> GRATIS untuk mahasiswa!</p>
+                    </div>
+                `;
+            }
+
+            modal.show();
+        }
+
+        // Fungsi untuk download majalah
+        function downloadMagazine(edition) {
+            let fileName, downloadUrl;
+
+            if (edition === 1) {
+                fileName = 'Majalah-LPM-Lensa-Media-Edisi-1-Swa-Paksa-2022.pdf';
+                downloadUrl = '../assets/file/Majalah-Swa-Paksa-Edisi-1.pdf';
+            } else if (edition === 2) {
+                fileName = 'Majalah-LPM-Lensa-Media-Edisi-2-TECHNO-2023.pdf';
+                downloadUrl = '../assets/file/Majalah-Techno-Edisi-2.pdf';
+            }
+
+            // Buat link download
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = fileName;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Tampilkan toast notification yang menarik
+            showDownloadToast(edition);
+        }
+
+        // Event listener untuk download dari modal
+        document.getElementById('downloadFromPreview').addEventListener('click', function () {
+            if (currentMagazineEdition) {
+                downloadMagazine(currentMagazineEdition);
+            }
+        });
+
+        // Fungsi untuk menampilkan toast notification yang menarik
+        function showDownloadToast(edition) {
+            const toastContainer = document.getElementById('toastContainer');
+            const toastId = 'toast-' + Date.now();
+
+            let title, message, icon;
+
+            if (edition === 1) {
+                title = 'Download Dimulai! 🎉';
+                message = 'Majalah "Swa Paksa" sedang diunduh...';
+                icon = 'fas fa-download';
+            } else if (edition === 2) {
+                title = 'Download Dimulai! 🎉';
+                message = 'Majalah "TECHNO" sedang diunduh...';
+                icon = 'fas fa-download';
+            }
+
+            const toastHTML = `
+                <div class="toast custom-toast toast-success" id="${toastId}" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <div class="toast-content">
+                            <div class="toast-icon">
+                                <i class="${icon}"></i>
+                            </div>
+                            <div class="toast-text">
+                                <h6>${title}</h6>
+                                <p>${message}</p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            `;
+
+            toastContainer.insertAdjacentHTML('beforeend', toastHTML);
+
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, {
+                autohide: true,
+                delay: 4000
+            });
+
+            toast.show();
+
+            // Hapus toast dari DOM setelah selesai
+            toastElement.addEventListener('hidden.bs.toast', function () {
+                toastElement.remove();
+            });
+        }
+
+        // Fungsi untuk menampilkan toast info
+        function showInfoToast(title, message, icon = 'fas fa-info-circle') {
+            const toastContainer = document.getElementById('toastContainer');
+            const toastId = 'toast-' + Date.now();
+
+            const toastHTML = `
+                <div class="toast custom-toast toast-info" id="${toastId}" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <div class="toast-content">
+                            <div class="toast-icon">
+                                <i class="${icon}"></i>
+                            </div>
+                            <div class="toast-text">
+                                <h6>${title}</h6>
+                                <p>${message}</p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            `;
+
+            toastContainer.insertAdjacentHTML('beforeend', toastHTML);
+
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, {
+                autohide: true,
+                delay: 3000
+            });
+
+            toast.show();
+
+            toastElement.addEventListener('hidden.bs.toast', function () {
+                toastElement.remove();
+            });
+        }
+
+
+    </script>
 </body>
 
 </html>
