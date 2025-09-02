@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baca Majalah LPM Lensa Media | PDF Reader</title>
+    <meta name="description" content="Baca majalah LPM Lensa Media secara online dengan PDF reader yang nyaman.">
+    <meta name="keywords" content="majalah, LPM Lensa Media, PDF reader, baca online, mahasiswa">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Layanan CSS -->
+    <link rel="stylesheet" href="css/layanan.css">
+
+    <style>
+        .reader-container {
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .reader-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .reader-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .reader-controls .btn {
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .reader-controls .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .pdf-container {
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+        }
+
+        .pdf-viewer {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 100%;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .pdf-viewer iframe {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .loading-container {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-container {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-icon {
+            font-size: 4rem;
+            color: #dc3545;
+            margin-bottom: 1rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .reader-header {
+                padding: 1rem;
+            }
+
+            .reader-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: stretch;
+            }
+
+            .reader-controls .btn {
+                width: 100%;
+                margin: 0.25rem 0;
+            }
+
+            .page-info {
+                text-align: center;
+                margin: 0.5rem 0;
+            }
+
+            .pdf-container {
+                padding: 1rem;
+            }
+
+            .pdf-viewer iframe {
+                height: 70vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pdf-viewer iframe {
+                height: 60vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reader-container">
+        <!-- Reader Header -->
+        <div class="reader-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h4 class="mb-0">
+                            <i class="fas fa-book-open me-2"></i>
+                            <span id="magazineTitle">Loading...</span>
+                        </h4>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="reader-controls">
+                            <button class="btn btn-light" onclick="goBack()">
+                                <i class="fas fa-arrow-left me-1"></i>Kembali
+                            </button>
+                            <button class="btn btn-success" onclick="downloadCurrentMagazine()">
+                                <i class="fas fa-download me-1"></i>Download
+                            </button>
+                            <div class="page-info">
+                                <i class="fas fa-file-pdf me-1"></i>
+                                <span id="pageInfo">PDF Reader</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PDF Container -->
+        <div class="pdf-container">
+            <div class="pdf-viewer" id="pdfViewer">
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <h5>Memuat Majalah...</h5>
+                    <p class="text-muted">Mohon tunggu sebentar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script>
+        let currentEdition = null;
+        let magazineData = {
+            1: {
+                title: 'Swa Paksa - Babad Gelora Wanita Jepara',
+                subtitle: 'Edisi 1 (2022)',
+                pdfUrl: '../assets/file/Majalah-Swa-Paksa-Edisi-1.pdf',
+                downloadUrl: '../assets/file/Majalah-Swa-Paksa-Edisi-1.pdf',
+                fileName: 'Majalah-LPM-Lensa-Media-Edisi-1-Swa-Paksa-2022.pdf'
+            },
+            2: {
+                title: 'TECHNO - Pemilu 2024 & Pendidikan Politik',
+                subtitle: 'Edisi 2 (2023)',
+                pdfUrl: '../assets/file/Majalah-Techno-Edisi-2.pdf',
+                downloadUrl: '../assets/file/Majalah-Techno-Edisi-2.pdf',
+                fileName: 'Majalah-LPM-Lensa-Media-Edisi-2-TECHNO-2023.pdf'
+            }
+        };
+
+        // Get edition from URL parameter
+        function getEditionFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const edition = urlParams.get('edisi');
+            return edition ? parseInt(edition) : null;
+        }
+
+        // Initialize reader
+        function initReader() {
+            currentEdition = getEditionFromUrl();
+
+            if (!currentEdition || !magazineData[currentEdition]) {
+                showError('Majalah tidak ditemukan');
+                return;
+            }
+
+            const magazine = magazineData[currentEdition];
+            document.getElementById('magazineTitle').textContent = magazine.title;
+            document.getElementById('pageInfo').textContent = magazine.subtitle;
+
+            loadPDF(magazine.pdfUrl);
+        }
+
+        // Load PDF using pdf.js (client-side render) — works on mobile without CORS
+        function loadPDF(pdfUrl) {
+            const pdfViewer = document.getElementById('pdfViewer');
+            pdfViewer.innerHTML = '<div class="loading-container"><div class="loading-spinner"></div><h5>Memuat Majalah...</h5><p class="text-muted">Mohon tunggu sebentar</p></div>';
+
+            // Configure worker
+            if (window.pdfjsLib) {
+                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            }
+
+            const pagesContainer = document.createElement('div');
+            pagesContainer.id = 'pdfPages';
+            pagesContainer.style.width = '100%';
+            pagesContainer.style.maxWidth = '900px';
+            pagesContainer.style.margin = '0 auto';
+
+            pdfjsLib.getDocument(pdfUrl).promise.then(function (pdfDoc) {
+                pdfViewer.innerHTML = '';
+                pdfViewer.appendChild(pagesContainer);
+
+                const renderPage = (pageNum) => {
+                    pdfDoc.getPage(pageNum).then(function (page) {
+                        const canvas = document.createElement('canvas');
+                        const context = canvas.getContext('2d');
+                        canvas.style.width = '100%';
+                        canvas.style.height = 'auto';
+                        canvas.style.display = 'block';
+                        canvas.style.margin = '0 auto 1rem';
+
+                        // Scale to container width
+                        const containerWidth = Math.min(pagesContainer.clientWidth || window.innerWidth - 32, 900);
+                        const viewport = page.getViewport({ scale: 1.5 });
+                        const scale = containerWidth / viewport.width;
+                        const scaledViewport = page.getViewport({ scale });
+                        canvas.width = scaledViewport.width;
+                        canvas.height = scaledViewport.height;
+
+                        const renderContext = {
+                            canvasContext: context,
+                            viewport: scaledViewport
+                        };
+
+                        pagesContainer.appendChild(canvas);
+                        page.render(renderContext).promise.then(function () {
+                            if (pageNum < pdfDoc.numPages) {
+                                renderPage(pageNum + 1);
+                            }
+                        });
+                    });
+                };
+
+                renderPage(1);
+            }).catch(function () {
+                // Fallback: provide open-in-new-tab link
+                pdfViewer.innerHTML = '<div class="error-container"><div class="error-icon"><i class="fas fa-exclamation-triangle"></i></div><h5>Oops! Tidak dapat merender PDF</h5><p class="text-muted">Buka file di tab baru jika perangkat tidak mendukung.</p><a class="btn btn-primary" href="' + pdfUrl + '" target="_blank" rel="noopener">Buka PDF di Tab Baru</a></div>';
+            });
+        }
+
+        // Show error
+        function showError(message) {
+            const pdfViewer = document.getElementById('pdfViewer');
+            pdfViewer.innerHTML = `
+                <div class="error-container">
+                    <div class="error-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h5>Oops! Terjadi Kesalahan</h5>
+                    <p class="text-muted">${message}</p>
+                    <button class="btn btn-primary" onclick="goBack()">
+                        <i class="fas fa-arrow-left me-1"></i>Kembali ke Halaman Majalah
+                    </button>
+                </div>
+            `;
+        }
+
+        // Go back to magazine page
+        function goBack() {
+            window.location.href = 'majalah.html';
+        }
+
+        // Download current magazine
+        function downloadCurrentMagazine() {
+            if (!currentEdition || !magazineData[currentEdition]) {
+                alert('Majalah tidak tersedia untuk download');
+                return;
+            }
+
+            const magazine = magazineData[currentEdition];
+            const link = document.createElement('a');
+            link.href = magazine.downloadUrl;
+            link.download = magazine.fileName;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Show success toast
+            showDownloadToast();
+        }
+
+        // Show download toast
+        function showDownloadToast() {
+            const toastContainer = document.createElement('div');
+            toastContainer.className = 'toast-container position-fixed top-0 end-0 p-3';
+            toastContainer.style.zIndex = '9999';
+            document.body.appendChild(toastContainer);
+
+            const toastHTML = `
+                <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; border: none;">
+                        <div class="d-flex align-items-center">
+                            <div style="width: 30px; height: 30px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                <i class="fas fa-download" style="color: white;"></i>
+                            </div>
+                            <div>
+                                <strong>Download Dimulai! 🎉</strong>
+                                <div style="font-size: 0.9rem; opacity: 0.9;">Majalah sedang diunduh...</div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" onclick="this.closest('.toast-container').remove()"></button>
+                    </div>
+                </div>
+            `;
+
+            toastContainer.innerHTML = toastHTML;
+
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                if (toastContainer.parentNode) {
+                    toastContainer.remove();
+                }
+            }, 4000);
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            initReader();
+        });
+    </script>
+</body>
+
+</html>
