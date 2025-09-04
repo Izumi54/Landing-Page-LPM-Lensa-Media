@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Organisasi LPM Lensa Media</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/layanan.css">
+
+    <style>
+        .org-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .org-chart {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .org-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .org-level {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .org-member {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .org-member:hover {
+            transform: scale(1.1);
+        }
+        
+        .org-member img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+            border: 3px solid white;
+        }
+        
+        .org-member .member-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .org-member .member-position {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            text-align: center;
+            margin-top: 0.2rem;
+        }
+        
+        .divisi-group {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .divisi-group h5 {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            color: #667eea;
+        }
+        
+        .org-submembers {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .org-submember {
+            background: linear-gradient(135deg, #7a88f1 0%, #7d5ac6 100%);
+            color: white;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 18px rgba(102, 126, 234, 0.25);
+        }
+        
+        .org-submember:hover {
+            transform: scale(1.08);
+        }
+        
+        .org-submember img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+            border: 2px solid white;
+        }
+        
+        .org-submember .member-name {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .org-submember .member-position {
+            font-size: 0.6rem;
+            opacity: 0.9;
+            text-align: center;
+        }
+        
+        .member-modal .modal-content {
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .member-modal .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px 20px 0 0;
+            border: none;
+        }
+        
+        .member-modal .modal-body {
+            padding: 2rem;
+        }
+        
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            display: block;
+            border: 5px solid #667eea;
+        }
+        
+        .member-info h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .member-info .position {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .division-info {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .division-info h6 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .org-member {
+                width: 90px;
+                height: 90px;
+                margin: 0 0.5rem;
+            }
+            .org-member img {
+                width: 45px;
+                height: 45px;
+            }
+            .org-submember {
+                width: 80px;
+                height: 80px;
+            }
+            .org-submember img {
+                width: 35px;
+                height: 35px;
+            }
+            .org-chart {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layanan-container">
+        <!-- Hero Section -->
+        <div class="org-hero">
+            <div class="maintenance-icon bounce">
+                <i class="fas fa-sitemap"></i>
+            </div>
+            <h1 class="maintenance-title">Struktur Organisasi</h1>
+            <p class="maintenance-subtitle">
+                LPM Lensa Media - Tim Kreatif yang Berdedikasi
+            </p>
+            <p class="mb-0">
+                <i class="fas fa-users me-2"></i> Klik pada avatar untuk melihat informasi lengkap
+            </p>
+        </div>
+
+        <!-- Organization Chart -->
+        <div class="org-chart">
+            <svg id="org-svg" class="org-lines"></svg>
+
+            <!-- Level 1: Pembina -->
+            <div class="org-level level-1">
+                <div class="org-member" data-member="pembina">
+                    <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=P" alt="Pembina" id="pembina-photo">
+                    <div class="member-name">Pembina</div>
+                    <div class="member-position">Advisor</div>
+                </div>
+            </div>
+
+            <!-- Level 2: Pimpinan Umum -->
+            <div class="org-level level-2">
+                <div class="org-member" data-member="pimpinan-umum">
+                    <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=PU" alt="Pimpinan Umum" id="pimpinan-umum-photo">
+                    <div class="member-name">Pimpinan Umum</div>
+                    <div class="member-position">General Leader</div>
+                </div>
+            </div>
+
+            <!-- Level 3: Sekretaris & Bendahara -->
+            <div class="org-level level-3">
+                <div class="org-member" data-member="sekretaris-1">
+                    <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=S1" alt="Sekretaris 1" id="sekretaris-1-photo">
+                    <div class="member-name">Sekretaris 1</div>
+                    <div class="member-position">Secretary 1</div>
+                </div>
+                <div class="org-member" data-member="bendahara">
+                    <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=B" alt="Bendahara" id="bendahara-photo">
+                    <div class="member-name">Bendahara</div>
+                    <div class="member-position">Treasurer</div>
+                </div>
+                <div class="org-member" data-member="sekretaris-2">
+                    <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=S2" alt="Sekretaris 2" id="sekretaris-2-photo">
+                    <div class="member-name">Sekretaris 2</div>
+                    <div class="member-position">Secretary 2</div>
+                </div>
+            </div>
+
+            <!-- Level 4: Pimpinan Redaksi & Co -->
+            <div class="org-level level-4">
+                <div class="org-member" data-member="co-penulisan">
+                    <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=CP" alt="Co. Divisi Penulisan" id="co-penulisan-photo">
+                    <div class="member-name">Co. Divisi Penulisan</div>
+                    <div class="member-position">Writing Division</div>
+                </div>
+                <div class="org-member" data-member="pimpinan-redaksi">
+                    <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=PR" alt="Pimpinan Redaksi" id="pimpinan-redaksi-photo">
+                    <div class="member-name">Pimpinan Redaksi</div>
+                    <div class="member-position">Editor in Chief</div>
+                </div>
+                <div class="org-member" data-member="co-redaksi">
+                    <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=CR" alt="Co. Divisi Redaksi" id="co-redaksi-photo">
+                    <div class="member-name">Co. Divisi Redaksi</div>
+                    <div class="member-position">Editorial Division</div>
+                </div>
+            </div>
+
+            <!-- Level 5: Co. Divisi Digitalisasi -->
+            <div class="org-level level-5">
+                <div class="org-member" data-member="co-digitalisasi">
+                    <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=CD" alt="Co. Divisi Digitalisasi" id="co-digitalisasi-photo">
+                    <div class="member-name">Co. Divisi Digitalisasi</div>
+                    <div class="member-position">Digital Division</div>
+                </div>
+            </div>
+
+            <!-- Level 6: Divisi Penulisan -->
+            <div class="org-level level-6">
+                <div class="divisi-group">
+                    <h5><i class="fas fa-pen-fancy me-2"></i>Divisi Penulisan</h5>
+                    <div class="org-submembers" data-parent="co-penulisan">
+                        <div class="org-submember" data-member="anggota-penulisan-1">
+                            <img src="https://via.placeholder.com/45x45/667eea/ffffff?text=A1" alt="Anggota Penulisan 1" id="anggota-penulisan-1-photo">
+                            <div class="member-name">Anggota 1</div>
+                            <div class="member-position">Writing</div>
+                        </div>
+                        <div class="org-submember" data-member="anggota-penulisan-2">
+                            <img src="https://via.placeholder.com/45x45/667eea/ffffff?text=A2" alt="Anggota Penulisan 2" id="anggota-penulisan-2-photo">
+                            <div class="member-name">Anggota 2</div>
+                            <div class="member-position">Writing</div>
+                        </div>
+                        <div class="org-submember" data-member="anggota-penulisan-3">
+                            <img src="https://via.placeholder.com/45x45/667eea/ffffff?text=A3" alt="Anggota Penulisan 3" id="anggota-penulisan-3-photo">
+                            <div class="member-name">Anggota 3</div>
+                            <div class="member-position">Writing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 7: Divisi Redaksi -->
+            <div class="org-level level-7">
+                <div class="divisi-group">
+                    <h5><i class="fas fa-edit me-2"></i>Divisi Redaksi</h5>
+                    <div class="org-submembers" data-parent="co-redaksi">
+                        <div class="org-submember" data-member="anggota-redaksi-1">
+                            <img src="https://via.placeholder.com/45x45/667eea/ffffff?text=R1" alt="Anggota Redaksi 1" id="anggota-redaksi-1-photo">
+                            <div class="member-name">Anggota 1</div>
+                            <div class="member-position">Editorial</div>
+                        </div>
+                        <div class="org-submember" data-member="anggota-redaksi-2">
+                            <img src="https://via.placeholder.com/45x45/667eea/ffffff?text=R2" alt="Anggota Redaksi 2" id="anggota-redaksi-2-photo">
+                            <div class="member-name">Anggota 2</div>
+                            <div class="member-position">Editorial</div>
+                        </div>
+                        <div class="org-submember" data-member="anggota-redaksi-3">
+                            <img src="https://via.placeholder.com/45x45/667eea/ffffff?text=R3" alt="Anggota Redaksi 3" id="anggota-redaksi-3-photo">
+                            <div class="member-name">Anggota 3</div>
+                            <div class="member-position">Editorial</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 8: Divisi Digitalisasi -->
+            <div class="org-level level-8">
+                <div class="divisi-group">
+                    <h5><i class="fas fa-laptop-code me-2"></i>Divisi Digitalisasi</h5>
+                    <div class="org-submembers" data-parent="co-digitalisasi">
+                        <div class="org-submember" data-member="anggota-digital-1">
+                            <img src="https://via.placeholder.com/45x45/667eea/ffffff?text=D1" alt="Anggota Digital 1" id="anggota-digital-1-photo">
+                            <div class="member-name">Anggota 1</div>
+                            <div class="member-position">Digital</div>
+                        </div>
+                        <div class="org-submember" data-member="anggota-digital-2">
+                            <img src="https://via.placeholder.com/45x45/667eea/ffffff?text=D2" alt="Anggota Digital 2" id="anggota-digital-2-photo">
+                            <div class="member-name">Anggota 2</div>
+                            <div class="member-position">Digital</div>
+                        </div>
+                        <div class="org-submember" data-member="anggota-digital-3">
+                            <img src="https://via.placeholder.com/45x45/667eea/ffffff?text=D3" alt="Anggota Digital 3" id="anggota-digital-3-photo">
+                            <div class="member-name">Anggota 3</div>
+                            <div class="member-position">Digital</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Info Section -->
+        <div class="info-section">
+            <h4><i class="fas fa-info-circle me-2"></i>Tentang Tim Kami</h4>
+            <p>LPM Lensa Media terdiri dari tim kreatif yang berdedikasi untuk menghasilkan konten berkualitas. Setiap anggota memiliki peran penting dalam menjaga kualitas dan konsistensi publikasi kami.</p>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h6><i class="fas fa-users me-2"></i>Total Anggota</h6>
+                    <p><strong>20 Anggota Aktif</strong> - Tim yang solid dan berpengalaman</p>
+                </div>
+                <div class="col-md-6">
+                    <h6><i class="fas fa-calendar me-2"></i>Periode Kepengurusan</h6>
+                    <p><strong>2023-2024</strong> - Periode kepengurusan saat ini</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <a href="../index.html" class="back-button">
+            <i class="fas fa-arrow-left me-2"></i> Kembali ke Beranda
+        </a>
+    </div>
+
+    <!-- Member Modal -->
+    <div class="modal fade member-modal" id="memberModal" tabindex="-1" aria-labelledby="memberModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="memberModalLabel">Informasi Anggota</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="" alt="Member Photo" class="member-photo" id="modal-photo">
+                    <div class="member-info text-center">
+                        <h4 id="modal-name">Nama Anggota</h4>
+                        <div class="position" id="modal-position">Posisi</div>
+                        <p id="modal-description">Deskripsi anggota dan divisi.</p>
+                    </div>
+                    <div class="division-info">
+                        <h6><i class="fas fa-briefcase me-2"></i>Informasi Divisi</h6>
+                        <p id="modal-division">Penjelasan tentang divisi dan tanggung jawab.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Member data
+        const memberData = {
+            'pembina': {
+                name: 'Dr. Ahmad Suryadi, M.Pd.',
+                position: 'Pembina',
+                description: 'Pembina LPM Lensa Media yang memberikan bimbingan dan arahan strategis untuk pengembangan organisasi.',
+                division: 'Divisi Pembina bertanggung jawab untuk memberikan bimbingan, arahan strategis, dan pengawasan terhadap seluruh kegiatan LPM Lensa Media.'
+            },
+            'pimpinan-umum': {
+                name: 'Muhammad Rizki Pratama',
+                position: 'Pimpinan Umum',
+                description: 'Pimpinan Umum LPM Lensa Media yang memimpin dan mengkoordinasikan seluruh kegiatan organisasi.',
+                division: 'Divisi Pimpinan Umum bertanggung jawab untuk memimpin, mengkoordinasikan, dan mengawasi seluruh kegiatan LPM Lensa Media.'
+            },
+            'sekretaris-1': {
+                name: 'Siti Nurhaliza',
+                position: 'Sekretaris 1',
+                description: 'Sekretaris 1 yang menangani administrasi dan dokumentasi organisasi.',
+                division: 'Divisi Sekretaris 1 bertanggung jawab untuk menangani administrasi organisasi, dokumentasi kegiatan, dan surat-menyurat.'
+            },
+            'bendahara': {
+                name: 'Ahmad Fauzi',
+                position: 'Bendahara',
+                description: 'Bendahara yang mengelola keuangan dan aset organisasi.',
+                division: 'Divisi Bendahara bertanggung jawab untuk mengelola keuangan organisasi, membuat laporan keuangan, dan mengatur anggaran kegiatan.'
+            },
+            'sekretaris-2': {
+                name: 'Dewi Kartika Sari',
+                position: 'Sekretaris 2',
+                description: 'Sekretaris 2 yang mendukung administrasi dan koordinasi organisasi.',
+                division: 'Divisi Sekretaris 2 bertanggung jawab untuk mendukung Sekretaris 1 dalam menangani administrasi organisasi.'
+            },
+            'co-penulisan': {
+                name: 'Budi Santoso',
+                position: 'Co. Divisi Penulisan',
+                description: 'Co. Divisi Penulisan yang mengkoordinasikan tim penulis dan konten.',
+                division: 'Divisi Co. Penulisan bertanggung jawab untuk mengkoordinasikan tim penulis dan mengatur jadwal penulisan artikel.'
+            },
+            'pimpinan-redaksi': {
+                name: 'Sarah Indah Putri',
+                position: 'Pimpinan Redaksi',
+                description: 'Pimpinan Redaksi yang memimpin proses editing dan publikasi.',
+                division: 'Divisi Pimpinan Redaksi bertanggung jawab untuk memimpin proses editing dan memastikan kualitas tulisan.'
+            },
+            'co-redaksi': {
+                name: 'Rizki Maulana',
+                position: 'Co. Divisi Redaksi',
+                description: 'Co. Divisi Redaksi yang mendukung proses editing dan publikasi.',
+                division: 'Divisi Co. Redaksi bertanggung jawab untuk mendukung Pimpinan Redaksi dalam proses editing.'
+            },
+            'co-digitalisasi': {
+                name: 'Fajar Nugroho',
+                position: 'Co. Divisi Digitalisasi',
+                description: 'Co. Divisi Digitalisasi yang menangani aspek digital dan teknologi.',
+                division: 'Divisi Co. Digitalisasi bertanggung jawab untuk menangani aspek digital organisasi dan mengelola website.'
+            },
+            'anggota-penulisan-1': {
+                name: 'Ahmad Rizki',
+                position: 'Anggota Tim Penulisan',
+                description: 'Anggota tim penulisan yang berkontribusi dalam pembuatan konten artikel.',
+                division: 'Bertanggung jawab untuk menulis artikel dan melakukan riset untuk publikasi LPM Lensa Media.'
+            },
+            'anggota-penulisan-2': {
+                name: 'Siti Aisyah',
+                position: 'Anggota Tim Penulisan',
+                description: 'Anggota tim penulisan yang fokus pada konten kreatif dan informatif.',
+                division: 'Mengembangkan konten kreatif dan melakukan wawancara untuk setiap tulisan.'
+            },
+            'anggota-penulisan-3': {
+                name: 'Muhammad Fadli',
+                position: 'Anggota Tim Penulisan',
+                description: 'Anggota tim penulisan yang menangani konten berita dan feature.',
+                division: 'Menangani pemberitaan dan feature stories dengan akurasi informasi yang tinggi.'
+            },
+            'anggota-redaksi-1': {
+                name: 'Nurul Hidayah',
+                position: 'Anggota Tim Redaksi',
+                description: 'Anggota tim redaksi yang membantu dalam proses editing dan layout.',
+                division: 'Membantu dalam proses editing dan pengecekan grammar untuk setiap publikasi.'
+            },
+            'anggota-redaksi-2': {
+                name: 'Rizki Pratama',
+                position: 'Anggota Tim Redaksi',
+                description: 'Anggota tim redaksi yang menangani desain dan layout publikasi.',
+                division: 'Bertanggung jawab untuk desain layout dan ilustrasi yang menarik.'
+            },
+            'anggota-redaksi-3': {
+                name: 'Dewi Sartika',
+                position: 'Anggota Tim Redaksi',
+                description: 'Anggota tim redaksi yang fokus pada kualitas konten dan faktual.',
+                division: 'Melakukan fact-checking dan memastikan akurasi informasi setiap konten.'
+            },
+            'anggota-digital-1': {
+                name: 'Budi Setiawan',
+                position: 'Anggota Tim Digitalisasi',
+                description: 'Anggota tim digitalisasi yang menangani website dan media sosial.',
+                division: 'Bertanggung jawab untuk mengelola website organisasi dan media sosial.'
+            },
+            'anggota-digital-2': {
+                name: 'Sari Indah',
+                position: 'Anggota Tim Digitalisasi',
+                description: 'Anggota tim digitalisasi yang fokus pada konten digital dan multimedia.',
+                division: 'Mengembangkan konten digital dan multimedia yang menarik.'
+            },
+            'anggota-digital-3': {
+                name: 'Ahmad Fauzan',
+                position: 'Anggota Tim Digitalisasi',
+                description: 'Anggota tim digitalisasi yang menangani teknologi dan inovasi digital.',
+                division: 'Mengembangkan teknologi digital dan inovasi platform organisasi.'
+            }
+        };
+
+        // Initialize modal
+        const memberModal = new bootstrap.Modal(document.getElementById('memberModal'));
+
+        function bindNodeClicks(selector) {
+            document.querySelectorAll(selector).forEach(node => {
+                node.addEventListener('click', function() {
+                    const memberId = this.getAttribute('data-member');
+                    const data = memberData[memberId];
+                    if (!data) return;
+                    document.getElementById('modal-name').textContent = data.name;
+                    document.getElementById('modal-position').textContent = data.position;
+                    document.getElementById('modal-description').textContent = data.description;
+                    document.getElementById('modal-division').textContent = data.division;
+                    const img = document.getElementById(memberId + '-photo');
+                    document.getElementById('modal-photo').src = img ? img.src : 'https://via.placeholder.com/150x150/667eea/ffffff?text=LM';
+                    memberModal.show();
+                });
+            });
+        }
+
+        bindNodeClicks('.org-member');
+        bindNodeClicks('.org-submember');
+
+        // Draw connecting lines for organizational structure
+        function drawLines() {
+            const svg = document.getElementById('org-svg');
+            if (!svg) return;
+            svg.innerHTML = '';
+            const svgRect = svg.getBoundingClientRect();
+
+            function bottomCenter(el) {
+                const r = el.getBoundingClientRect();
+                return {
+                    x: r.left + r.width / 2 - svgRect.left,
+                    y: r.bottom - svgRect.top
+                };
+            }
+
+            function topCenter(el) {
+                const r = el.getBoundingClientRect();
+                return {
+                    x: r.left + r.width / 2 - svgRect.left,
+                    y: r.top - svgRect.top
+                };
+            }
+
+            function line(p1, p2) {
+                const L = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                L.setAttribute('x1', p1.x);
+                L.setAttribute('y1', p1.y);
+                L.setAttribute('x2', p2.x);
+                L.setAttribute('y2', p2.y);
+                L.setAttribute('stroke', '#667eea');
+                L.setAttribute('stroke-opacity', '0.4');
+                L.setAttribute('stroke-width', '2');
+                svg.appendChild(L);
+            }
+
+            function connectBus(parentSel, childrenSel) {
+                const parent = document.querySelector(parentSel);
+                const children = Array.from(document.querySelectorAll(childrenSel));
+                if (!parent || children.length === 0) return;
+                const p = bottomCenter(parent);
+                const tops = children.map(c => topCenter(c));
+                const y = Math.min(...tops.map(t => t.y)) - 12;
+                line(p, {
+                    x: p.x,
+                    y
+                });
+                line({
+                    x: tops[0].x,
+                    y
+                }, {
+                    x: tops[tops.length - 1].x,
+                    y
+                });
+                tops.forEach(t => line({
+                    x: t.x,
+                    y
+                }, t));
+            }
+
+            // Pembina -> Pimpinan Umum
+            const pembina = document.querySelector('[data-member="pembina"]');
+            const pimpinanUmum = document.querySelector('[data-member="pimpinan-umum"]');
+            if (pembina && pimpinanUmum) {
+                line(bottomCenter(pembina), topCenter(pimpinanUmum));
+            }
+
+            // Pimpinan Umum -> Sekretaris1, Bendahara, Sekretaris2
+            connectBus('[data-member="pimpinan-umum"]', '.level-3 > .org-member');
+
+            // Pimpinan Umum -> Co. Divisi Penulisan, Pimpinan Redaksi, Co. Divisi Redaksi
+            connectBus('[data-member="pimpinan-umum"]', '.level-4 > .org-member');
+
+            // Pimpinan Umum -> Co. Divisi Digitalisasi
+            const pimpinanUmum2 = document.querySelector('[data-member="pimpinan-umum"]');
+            const coDigital = document.querySelector('[data-member="co-digitalisasi"]');
+            if (pimpinanUmum2 && coDigital) {
+                line(bottomCenter(pimpinanUmum2), topCenter(coDigital));
+            }
+
+            // Co. Divisi Penulisan -> Anggota Divisi Penulisan
+            connectBus('[data-member="co-penulisan"]', '[data-parent="co-penulisan"] > .org-submember');
+
+            // Co. Divisi Redaksi -> Anggota Divisi Redaksi
+            connectBus('[data-member="co-redaksi"]', '[data-parent="co-redaksi"] > .org-submember');
+
+            // Co. Divisi Digitalisasi -> Anggota Divisi Digitalisasi
+            connectBus('[data-member="co-digitalisasi"]', '[data-parent="co-digitalisasi"] > .org-submember');
+        }
+
+        // Draw lines when page loads and on resize
+        window.addEventListener('load', drawLines);
+        window.addEventListener('resize', drawLines);
+
+        // Interactive effects
+        document.querySelectorAll('.org-member, .org-submember').forEach(member => {
+            member.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+            });
+            member.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+
+</html>
